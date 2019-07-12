@@ -177,8 +177,12 @@ application.secret_key = 'Testkey'`
 4. go to  http://52.56.160.20/ and you should see the website up and running
 
 
+## Helpful sources
 
-
+* [Corey Shafer: Deploying to a Linux server](https://www.youtube.com/watch?v=goToXTC96Co&list=LLSDgLXyqLFjjBwxqetyb49A&index=2&t=2794s)
+* [rrjoson for a excellent readme help](https://github.com/rrjoson/udacity-linux-server-configuration)
+* "FLask" and "Apache" documentation
+* And last but not least "StackOverflow" for all the countless bugs and problems I had to fix
 
 
 
