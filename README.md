@@ -5,7 +5,7 @@
 the objective of this project is to take a baseline installation of a Linux server and prepare it to host web applications. The student will secure the server from a number of attack vectors, install and configure a database server, and deploy one of my existing web applications onto it.
 
 * SSH port: 2200
-* IP address: 52.56.160.20
+* IP address: 35.178.203.203
 * Grader password if asked will be sent with project comments
 
 ## Creating a Ubuntu instance on AWS
@@ -22,7 +22,7 @@ the objective of this project is to take a baseline installation of a Linux serv
 3. Open the downloaded key like `cat LightsailDefaultKey-eu-west-2.pem` and copy the content
 3. paste the content into  "aws_key.rsa"
 4. Set the file permission to owner only : `chmod 600 ~/.ssh/aws_key.rsa`
-5. Log in to the server like: `ssh -i ~/.ssh/aws_key.rsa ubuntu@52.56.160.20`
+5. Log in to the server like: `ssh -i ~/.ssh/aws_key.rsa ubuntu@35.178.203.203`
 
 ## Updating the current packages
 1. type `sudo apt-get update` to update the packages
@@ -45,7 +45,7 @@ the objective of this project is to take a baseline installation of a Linux serv
 8. Enable the firewall: `sudo ufw enable`
 9. Check the firewall status: `sudo ufw status`
 10. Be sure too add "TCP port:2200" and "UDP port:123" to the firewall on AWS under networking and Delete "port:22"
-11. ssh in using the new port 2200: `ssh -i ~/.ssh/aws_key.rsa ubuntu@52.56.160.20 -p 2200`
+11. ssh in using the new port 2200: `ssh -i ~/.ssh/aws_key.rsa ubuntu@35.178.203.203 -p 2200`
 
 ## Creating a new user called "grader" and giving it sudo access
 1. Create a new user called "grader" by typing:`sudo adduser grader`
@@ -61,7 +61,7 @@ the objective of this project is to take a baseline installation of a Linux serv
 5. then type `nano .ssh/authorized_keys` to edit the file and copy the public key to this file
 6. type `chmod 700 .ssh` and `chmod 644 .ssh/authorized_keys` to restrict permissions
 7. Restart SSH by typing: `sudo service ssh restart`
-8. log in as grader by typing: `ssh -i ~/.ssh/grader_key -p 2200 grader@52.56.160.20`
+8. log in as grader by typing: `ssh -i ~/.ssh/grader_key -p 2200 grader@35.178.203.203`
 9. for security reason to disable password type `sudo nano /etc/ssh/sshd_config`
 10. Change the line `PasswordAuthentication yes` to a "no"
 11. Restart SSH by typing: `sudo service ssh restart`
@@ -72,7 +72,7 @@ the objective of this project is to take a baseline installation of a Linux serv
 
 ## Installing and configuring Apache
 1. Install "apache2" by typing: `sudo apt-get install apache2`
-2. Go to http://52.56.160.20/, apache will show a default page if it is working
+2. Go to http://35.178.203.203/, apache will show a default page if it is working
 
 ## Installing and configuring Python mod_wsgi
 1. Install "mod_wsgi" package by typing: `sudo apt-get install libapache2-mod-wsgi python-dev`
@@ -126,8 +126,8 @@ In my case I need to add the -H flag to sudo like this `sudo -H install (package
 2. Add this to the file:
 `
 <VirtualHost *:80>
-                ServerName 52.56.160.20
-                ServerAdmin grader@52.56.160.20
+                ServerName 35.178.203.203
+                ServerAdmin grader@35.178.203.203
                 WSGIDaemonProcess application  python-path=/home/grader/.local/lib/python2.7/site-packages
                 WSGIProcessGroup application
                 WSGIScriptAlias / /var/www/Item-Catalog/catalog.wsgi
